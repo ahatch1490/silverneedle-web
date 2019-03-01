@@ -68,7 +68,7 @@ namespace SilverNeedle.Characters
 
             Feats = character.Feats.Select(x => x.Name).ToArray();
             CapableSkills = character.SkillRanks.GetRankedSkills().Select(x => x.ToString()).ToArray();
-            AllSkills = character.SkillRanks.GetSkills().Select(x => x.ToString()).ToArray();
+            AllSkills = character.SkillRanks.GetSkills().Where(x => x.Score() > int.MinValue).Select(x => x.ToString()).ToArray();
             
             Languages = character.Languages.Select(x => x.Name).ToArray();
             Gear = character.Inventory.ToStringArray();
